@@ -1,20 +1,49 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Home from './Home.js';
+import SignUp from './components/SignUp.js';
+import SignOut from './components/SignOut.js';
+import ChangePassword from './components/ChangePassword.js';
+import ManageLogin from './components/ManageLogin.js';
+import { Navbar } from 'react-bootstrap';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+      <Router>
+        <div>
+          <Navbar inverse collapseOnSelect>
+            <Navbar.Header>
+              <Navbar.Brand>
+                <Link to="/karts">Welcome to KArts</Link>
+              </Navbar.Brand>
+              <Navbar.Toggle />
+            </Navbar.Header>
+            <Navbar.Collapse>
+            <Navbar.Header>
+              <ul className="nav navbar-nav">
+                <li><Link to="/karts/sign-in" id="sign-in-link">Sign In / Register</Link></li>
+                <li><Link to="/karts/change-password" id="change-pwd-link" className="hidden">Change Password</Link></li>
+              </ul>
+            </Navbar.Header>
+              <ul className="nav navbar-nav navbar-right">
+                <li><Link to="/karts/sign-out" id="sign-out-link" className="hidden">Sign Out</Link></li>
+              </ul>
+            </Navbar.Collapse>
+          </Navbar>
+
+          <Route exact path="/karts" component={Home}/>
+          <Route exact path="/karts/sign-up" component={SignUp}/>
+          <Route exact path="/karts/change-password" component={ChangePassword}/>
+          <Route exact path="/karts/sign-in" component={ManageLogin}/>
+          <Route exact path="/karts/sign-out" component={SignOut}/>
+        </div>
+      </Router>
+    )
   }
 }
 
