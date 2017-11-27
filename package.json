@@ -4,9 +4,13 @@
   "private": true,
   "homepage": "https://myusername.github.io/karts",
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "gh-pages": "^1.1.0",
+    "jquery": "^3.2.1",
     "react": "^16.1.1",
+    "react-bootstrap": "^0.31.5",
     "react-dom": "^16.1.1",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17"
   },
   "scripts": {
