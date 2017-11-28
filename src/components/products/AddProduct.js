@@ -71,8 +71,6 @@ class AddProduct extends Component {
   }
 
   render() {
-    console.log('info in add props', this.props)
-    console.log('sate in add render', this.state)
     return (
       <div className="container">
         <h3>Add Product</h3>

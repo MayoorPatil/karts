@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import Product from './Product.js';
+import CartProducts from './CartProducts.js';
 import $ from 'jquery';
 const store = require('../../store');
 const apiOrigin = require('../../config');
 
-class ManageProducts extends Component {
+class ManageShopping extends Component {
   constructor(props) {
     super(props);
-    this.updateClick = this.updateClick.bind(this);
-    this.deleteClick = this.deleteClick.bind(this);
+    this.updateCart = this.updateCart.bind(this);
     this.state = {
-      products: null
+      products: null,
+      cartProducts: []
     }
   }
 
@@ -30,35 +30,16 @@ class ManageProducts extends Component {
     });
   }
 
-updateClick(e, props) {
-  store.itemIdToUpdate = props.id
-  this.props.history.push('/karts/products/update-item')
-}
-
-deleteClick(e, props) {
-  $.ajax({
-    url: apiOrigin() + '/products/' + props.id,
-    method: 'DELETE',
-    headers: {
-        Authorization: 'Token token=' + store.user.token
-    },
-    success: (data) => {
-      var updatedProducts = this.state.products
-      updatedProducts.splice(updatedProducts.findIndex((ele) => ele.id === props.id),1)
-      this.setState({
-        products: updatedProducts
-      })
-      this.props.history.push('/karts/products')
-    },
-    error: (error) => {
-      console.error(error)
-    }
-  });
-}
-
-addProduct(e) {
-  this.props.history.push('/karts/products/add')
-}
+  updateCart (e, props) {
+    var product = store.products.find(ele => ele.id === props.id)
+    var products = this.state.cartProducts
+    products.push(product)
+    this.setState({
+      cartProducts: products
+    })
+    $('#cart-count').html(this.state.cartProducts.length)
+    $('#' + props.id).addClass('hidden')
+  }
 
     render() {
             if (!this.state.products) {
@@ -72,19 +53,17 @@ addProduct(e) {
                       </div>);
             } else {
               var components = this.state.products.map((item, index) => {
-                return <Product
+                return <CartProducts
                 id={item.id}
                 key={index}
                 image_url={item.image_url}
                 price={item.price}
                 description={item.description}
-                updateClick={this.updateClick}
-                deleteClick={this.deleteClick}
+                updateCart={this.updateCart}
                 />
               })
             return (
             <div id="test" className="container">
-              <button className="btn btn-success" onClick={(e) => this.addProduct(e)}>Add New Product</button><br /><br />
               {components}
             </div>
           );
@@ -92,4 +71,4 @@ addProduct(e) {
       }
 }
 
-export default ManageProducts;
+export default ManageShopping;
