@@ -8,6 +8,7 @@ import ManageProducts from './components/products/ManageProducts.js';
 import UpdateProduct from './components/products/UpdateProduct.js';
 import AddProduct from './components/products/AddProduct.js';
 import ManageShopping from './components/shopping/ManageShopping.js';
+import CartView from './components/shopping/CartView.js';
 import { Navbar } from 'react-bootstrap';
 import {
   BrowserRouter as Router,
@@ -37,7 +38,7 @@ class App extends Component {
             </Navbar.Header>
               <ul className="nav navbar-nav navbar-right">
                 <li>
-                  <Link to="/karts/cart-view" id="cart-products">
+                  <Link to="/karts/cart-view" id="cart-view">
                       <span id="cart-count" className="glyphicon glyphicon-shopping-cart badge">0</span>
                   </Link>
                 </li>
@@ -56,6 +57,7 @@ class App extends Component {
           <Route exact path="/karts/products/update-item" component={UpdateProduct}/>
           <Route exact path="/karts/products/add" component={AddProduct}/>
           <Route exact path="/karts/shopping" component={ManageShopping}/>
+          <Route exact path="/karts/cart-view" component={CartView}/>
         </div>
       </Router>
     )

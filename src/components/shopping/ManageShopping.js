@@ -37,6 +37,7 @@ class ManageShopping extends Component {
     this.setState({
       cartProducts: products
     })
+    store.cartProducts = products
     $('#cart-count').html(this.state.cartProducts.length)
     $('#' + props.id).addClass('hidden')
   }
