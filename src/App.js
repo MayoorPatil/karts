@@ -4,8 +4,9 @@ import SignUp from './components/SignUp.js';
 import SignOut from './components/SignOut.js';
 import ChangePassword from './components/ChangePassword.js';
 import ManageLogin from './components/ManageLogin.js';
-import ManageShopping from './components/shopping/ManageShopping.js';
-import UpdateItem from './components/shopping/UpdateItem.js';
+import ManageProducts from './components/products/ManageProducts.js';
+import UpdateProduct from './components/products/UpdateProduct.js';
+import AddProduct from './components/products/AddProduct.js';
 import { Navbar } from 'react-bootstrap';
 import {
   BrowserRouter as Router,
@@ -30,7 +31,7 @@ class App extends Component {
               <ul className="nav navbar-nav">
                 <li><Link to="/karts/sign-in" id="sign-in-link">Sign In / Register</Link></li>
                 <li><Link to="/karts/change-password" id="change-pwd-link" className="hidden">Change Password</Link></li>
-                <li><Link to="/karts/shopping" id="shopping">Shopping</Link></li>
+                <li><Link to="/karts/products" id="products">Manage Products</Link></li>
               </ul>
             </Navbar.Header>
               <ul className="nav navbar-nav navbar-right">
@@ -44,8 +45,9 @@ class App extends Component {
           <Route exact path="/karts/change-password" component={ChangePassword}/>
           <Route exact path="/karts/sign-in" component={ManageLogin}/>
           <Route exact path="/karts/sign-out" component={SignOut}/>
-          <Route exact path="/karts/shopping" component={ManageShopping}/>
-          <Route exact path="/karts/shopping/update-item" component={UpdateItem}/>
+          <Route exact path="/karts/products" component={ManageProducts}/>
+          <Route exact path="/karts/products/update-item" component={UpdateProduct}/>
+          <Route exact path="/karts/products/add" component={AddProduct}/>
         </div>
       </Router>
     )
