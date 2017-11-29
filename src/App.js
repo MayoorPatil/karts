@@ -9,6 +9,7 @@ import UpdateProduct from './components/products/UpdateProduct.js';
 import AddProduct from './components/products/AddProduct.js';
 import ManageShopping from './components/shopping/ManageShopping.js';
 import CartView from './components/shopping/CartView.js';
+import OrderView from './components/shopping/OrderView.js';
 import { Navbar } from 'react-bootstrap';
 import {
   BrowserRouter as Router,
@@ -58,6 +59,7 @@ class App extends Component {
           <Route exact path="/karts/products/add" component={AddProduct}/>
           <Route exact path="/karts/shopping" component={ManageShopping}/>
           <Route exact path="/karts/cart-view" component={CartView}/>
+          <Route exact path="/karts/order-view" component={OrderView}/>
         </div>
       </Router>
     )

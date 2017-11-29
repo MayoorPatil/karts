@@ -85,7 +85,7 @@ class AddProduct extends Component {
           />
 
           <TextInput
-          type="text"
+          type="number"
           name="price"
           label="Price"
           placeholder="Price here"

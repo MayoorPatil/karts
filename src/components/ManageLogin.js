@@ -62,7 +62,12 @@ class ManageLogin extends Component {
       success: (response) => {
         this.setState({user: response.user});
         store.user = response.user
-        this.props.history.push('/karts');
+        if (store.proceedToCheckout) {
+          store.proceedToCheckout = false
+          this.props.history.push('/karts/order-view');
+        } else {
+            this.props.history.push('/karts');
+        }
         $('#sign-in-link').addClass('hidden');
         $('#sign-out-link, #change-pwd-link').removeClass('hidden');
       },

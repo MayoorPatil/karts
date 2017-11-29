@@ -25,8 +25,8 @@ class SignOut extends Component {
 
   render() {
     return (
-      <div>
-        Signed out Successfully!!
+      <div className="container">
+        <h5>Signed out Successfully!!</h5>
       </div>
     );
   }
