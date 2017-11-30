@@ -102,6 +102,7 @@ class OrderView extends Component {
           }
         })
       })
+      store.user.orders[store.user.orders.length] = response.order
       store.cartProducts = []
       $('#cart-count').html(store.cartProducts.length)
       this.props.history.push('/karts/order-history');

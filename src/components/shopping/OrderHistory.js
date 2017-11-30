@@ -76,10 +76,12 @@ class OrderHistory extends Component {
       var orders = store.user.orders.map((order, index) => {
         amount = order.amount === null ? 0 : Number((Math.round(parseFloat(order.amount) + 'e2')) + 'e-2')
         status = order.status === null ? 'completed' : order.status
+        var date = (new Date()).toISOString().split('T')[0]
+        date = (order.created_at === undefined) ? date : (new Date(order.created_at)).toISOString().split('T')[0]
         let orderId = order.id
         return <tr id={order.id} key={index}>
           <td> {order.id} </td>
-          <td>{order.created_at}</td>
+          <td>{date}</td>
           <td>{amount}</td>
           <td>
             <button id={order.id} className="btn btn-info btn-xs" onClick={(e) => this.displayOrder(e, orderId)}>View Details</button>&nbsp;&nbsp;
