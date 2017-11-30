@@ -87,7 +87,8 @@ class OrderHistory extends Component {
       } else {
           return (
             <div className="container">
-              <h5>No orders to display. Also you need to sign-in to view your orders <br/><br />Please continue shopping!</h5>
+              <h5>No orders to display. Also you need to sign-in to view your orders <br/><br />
+              Please continue <a href="/karts/shopping">shopping here</a></h5>
             </div>
           );
       }

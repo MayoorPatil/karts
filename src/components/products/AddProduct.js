@@ -71,42 +71,50 @@ class AddProduct extends Component {
   }
 
   render() {
-    return (
-      <div className="container">
-        <h3>Add Product</h3>
-        <form>
-          <TextInput
-          type="text"
-          name="description"
-          label="Description"
-          placeholder="Description here"
-          value={this.state.product.description}
-          onChange={this.setProductState}
-          />
+    if (store.user) {
+      return (
+        <div className="container">
+          <h3>Add Product</h3>
+          <form>
+            <TextInput
+            type="text"
+            name="description"
+            label="Description"
+            placeholder="Description here"
+            value={this.state.product.description}
+            onChange={this.setProductState}
+            />
 
-          <TextInput
-          type="number"
-          name="price"
-          label="Price"
-          placeholder="Price here"
-          value={this.state.product.price}
-          onChange={this.setProductState}
-          />
+            <TextInput
+            type="number"
+            name="price"
+            label="Price"
+            placeholder="Price here"
+            value={this.state.product.price}
+            onChange={this.setProductState}
+            />
 
-          <TextInput
-          type="text"
-          name="image_url"
-          label="Image URL"
-          placeholder="Image URL here"
-          value={this.state.product.image_url}
-          onChange={this.setProductState}
-          />
+            <TextInput
+            type="text"
+            name="image_url"
+            label="Image URL"
+            placeholder="Image URL here"
+            value={this.state.product.image_url}
+            onChange={this.setProductState}
+            />
 
-          <button className="btn btn-success" onClick={(e) => this.addProduct(e)}>Add</button>
-          <br /><br /><p>{this.state.message}</p>
-        </form>
-      </div>
-    );
+            <button className="btn btn-success" onClick={(e) => this.addProduct(e)}>Add</button>
+            <br /><br /><p>{this.state.message}</p>
+          </form>
+        </div>
+      );
+    } else {
+      return (
+        <div className="container">
+        <h5>Sorry this page is only accesible to site administrators.</h5>
+        Please continue <a href="/karts/shopping">shopping here</a>
+        </div>);
+    }
   }
 }
 

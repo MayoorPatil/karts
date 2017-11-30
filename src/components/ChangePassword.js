@@ -52,38 +52,46 @@ onChangePassword(e) {
     const isEnabled =
       old.length > 0 &&
       this.state.new.length > 0;
-    return (
-      <div className="container">
-        <form>
-          <div className="form-group row">
-            <div className="col-xs-4">
-              <label>Old Password</label>
-              <input
-              className="form-control"
-              ref="old"
-              type="password"
-              placeholder="Old password here"
-              value={this.state.old}
-              onChange={(e) => this.passwordChange(e)}
-              />
-            </div><br /><br /><br /><br />
-            <div className="col-xs-4">
-              <label>New Password</label>
-              <input
-              className="form-control"
-              ref="new"
-              type="password"
-              placeholder="Password conformation here"
-              value={this.state.new}
-              onChange={(e) => this.passwordConfirmationChange(e)}
-              />
-            </div><br /><br /><br /><br />
+      if (store.user) {
+        return (
+          <div className="container">
+            <form>
+              <div className="form-group row">
+                <div className="col-xs-4">
+                  <label>Old Password</label>
+                  <input
+                  className="form-control"
+                  ref="old"
+                  type="password"
+                  placeholder="Old password here"
+                  value={this.state.old}
+                  onChange={(e) => this.passwordChange(e)}
+                  />
+                </div><br /><br /><br /><br />
+                <div className="col-xs-4">
+                  <label>New Password</label>
+                  <input
+                  className="form-control"
+                  ref="new"
+                  type="password"
+                  placeholder="Password conformation here"
+                  value={this.state.new}
+                  onChange={(e) => this.passwordConfirmationChange(e)}
+                  />
+                </div><br /><br /><br /><br />
+              </div>
+            </form>
+            <button disabled={!isEnabled} className="btn btn-success" onClick={(e) => this.onChangePassword(e)}>Change Password</button>
+            <br /><br /><p>{this.state.message}</p>
           </div>
-        </form>
-        <button disabled={!isEnabled} className="btn btn-success" onClick={(e) => this.onChangePassword(e)}>Change Password</button>
-        <br /><br /><p>{this.state.message}</p>
-      </div>
-    );
+        );
+      } else {
+        return (
+          <div className="container">
+          <h5>You need to sign-in to access this page</h5>
+          Please <a href="/karts/sign-in">sign-in here</a>
+          </div>);
+      }
   }
 }
 

@@ -26,10 +26,12 @@ class UpdateProduct extends Component {
     }
 
   componentDidMount () {
-    var product = store.products.find(ele => ele.id === store.itemIdToUpdate)
-    this.setState({
-      product: product
-    })
+    if (store.products && store.products.length > 0) {
+      var product = store.products.find(ele => ele.id === store.itemIdToUpdate)
+      this.setState({
+        product: product
+      })
+    }
   }
 
   updateFormIsValid () {
@@ -78,39 +80,47 @@ class UpdateProduct extends Component {
   }
 
   render() {
-    return (
-      <div className="container">
-        <h3>Update Product</h3>
-        <form>
-          <TextInput
-          type="text"
-          name="description"
-          label="Description"
-          value={this.state.product.description}
-          onChange={this.setProductState}
-          />
+    if (store.user) {
+      return (
+        <div className="container">
+          <h3>Update Product</h3>
+          <form>
+            <TextInput
+            type="text"
+            name="description"
+            label="Description"
+            value={this.state.product.description}
+            onChange={this.setProductState}
+            />
 
-          <TextInput
-          type="text"
-          name="price"
-          label="Price"
-          value={this.state.product.price}
-          onChange={this.setProductState}
-          />
+            <TextInput
+            type="text"
+            name="price"
+            label="Price"
+            value={this.state.product.price}
+            onChange={this.setProductState}
+            />
 
-          <TextInput
-          type="text"
-          name="image_url"
-          label="Image URL"
-          value={this.state.product.image_url}
-          onChange={this.setProductState}
-          />
+            <TextInput
+            type="text"
+            name="image_url"
+            label="Image URL"
+            value={this.state.product.image_url}
+            onChange={this.setProductState}
+            />
 
-          <button className="btn btn-success" onClick={(e) => this.updateProduct(e)}>Update</button>
-          <br /><br /><p>{this.state.message}</p>
-        </form>
-      </div>
-    );
+            <button className="btn btn-success" onClick={(e) => this.updateProduct(e)}>Update</button>
+            <br /><br /><p>{this.state.message}</p>
+          </form>
+        </div>
+      );
+    } else {
+      return (
+        <div className="container">
+        <h5>Sorry this page is only accesible to site administrators.</h5>
+        Please continue <a href="/karts/shopping">shopping here</a>
+        </div>);
+    }
   }
 }
 

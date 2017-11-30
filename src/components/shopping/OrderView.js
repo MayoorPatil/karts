@@ -196,7 +196,7 @@ class OrderView extends Component {
     } else {
       return (
         <div className="container">
-          <h5>No orders to display. Please continue shopping!</h5>
+          <h5>No orders to display. Please continue <a href="/karts/shopping">shopping here</a></h5>
         </div>
       );
     }

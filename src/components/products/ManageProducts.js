@@ -61,35 +61,43 @@ addProduct(e) {
 }
 
     render() {
-            if (!this.state.products) {
-              var styles = {
-                width: '45%'
-              }
-              return (<div className="progress">Loading...
-                        <div className="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style={styles}>
-                          <span className="sr-only">45% Complete</span>
-                        </div>
-                      </div>);
-            } else {
-              var components = this.state.products.map((item, index) => {
-                return <Product
-                id={item.id}
-                key={index}
-                image_url={item.image_url}
-                price={item.price}
-                description={item.description}
-                updateClick={this.updateClick}
-                deleteClick={this.deleteClick}
-                />
-              })
-            return (
-            <div id="test" className="container">
-              <button className="btn btn-success" onClick={(e) => this.addProduct(e)}>Add New Product</button><br /><br />
-              {components}
-            </div>
-          );
-        }
+      if (store.user) {
+        if (!this.state.products) {
+          var styles = {
+            width: '45%'
+          }
+          return (<div className="progress">Loading...
+                    <div className="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style={styles}>
+                      <span className="sr-only">45% Complete</span>
+                    </div>
+                  </div>);
+        } else {
+          var components = this.state.products.map((item, index) => {
+            return <Product
+            id={item.id}
+            key={index}
+            image_url={item.image_url}
+            price={item.price}
+            description={item.description}
+            updateClick={this.updateClick}
+            deleteClick={this.deleteClick}
+            />
+          })
+        return (
+        <div id="test" className="container">
+          <button className="btn btn-success" onClick={(e) => this.addProduct(e)}>Add New Product</button><br /><br />
+          {components}
+        </div>
+      );
       }
+    } else {
+      return (
+        <div className="container">
+        <h5>Sorry this page is only accesible to site administrators.</h5>
+        Please continue <a href="/karts/shopping">shopping here</a>
+        </div>);
+    }
+  }
 }
 
 export default ManageProducts;
