@@ -68,6 +68,7 @@ class ManageLogin extends Component {
         } else {
             this.props.history.push('/karts');
         }
+        response.user.id === 1 ? $('#manage-products').removeClass('hidden') : $('#manage-products').addClass('hidden')
         $('#sign-in-link').addClass('hidden');
         $('#sign-out-link, #change-pwd-link, #order-history').removeClass('hidden');
       },

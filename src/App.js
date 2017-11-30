@@ -38,8 +38,8 @@ class App extends Component {
               <ul className="nav navbar-nav">
                 <li><Link to="/karts/sign-in" id="sign-in-link">Sign In / Register</Link></li>
                 <li><Link to="/karts/shopping" id="products">Shopping</Link></li>
-                <li><Link to="/karts/about" id="products">About</Link></li>
-                <li><Link to="/karts/contact" id="products">Contact</Link></li>
+                <li><Link to="/karts/about" id="about">About</Link></li>
+                <li><Link to="/karts/contact" id="contact">Contact</Link></li>
                 <li><Link to="/karts/order-history" id="order-history" className="hidden">Order History</Link></li>
               </ul>
             </Navbar.Header>
@@ -49,7 +49,7 @@ class App extends Component {
                       <span id="cart-count" className="glyphicon glyphicon-shopping-cart badge">0</span>
                   </Link>
                 </li>
-                <li><Link to="/karts/products" id="products">Manage Products</Link></li>
+                <li><Link to="/karts/products" id="manage-products" className="hidden">Manage Products</Link></li>
                 <li><Link to="/karts/change-password" id="change-pwd-link" className="hidden">Change Password</Link></li>
                 <li><Link to="/karts/sign-out" id="sign-out-link" className="hidden">Sign Out</Link></li>
               </ul>

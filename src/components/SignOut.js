@@ -17,7 +17,7 @@ class SignOut extends Component {
         success: (response) => {
           store.user = null;
           $('#sign-in-link').removeClass('hidden');
-          $('#sign-out-link, #change-pwd-link, #order-history').addClass('hidden');
+          $('#sign-out-link, #change-pwd-link, #order-history, #manage-products').addClass('hidden');
         }
       });
     }
