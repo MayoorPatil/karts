@@ -13,7 +13,7 @@ class OrderView extends Component {
       order: {
         name: '',
         address: '',
-        phone_number: 1111111111,
+        phone_number: '',
         email: '',
         amount: 0
       },
