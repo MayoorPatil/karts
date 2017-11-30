@@ -15,7 +15,6 @@ class OrderHistory extends Component {
   }
 
   componentDidMount () {
-    let products = []
     let orders = []
     if (store.user) {
       store.user.orders.forEach((order, index) => {
@@ -35,14 +34,14 @@ class OrderHistory extends Component {
       }
     )}
     store.orders = orders
-    this.setState({
-    orders: orders
-  })
+    if (store.user) {
+      this.setState({
+      orders: store.user.orders
+      })
+    }
   }
 
   deleteOrder (e, orderId) {
-    let products = []
-    let orders = this.state.orders
     if (store.user) {
       $.ajax({
         url: apiOrigin() + '/orders/' + orderId,
@@ -51,10 +50,12 @@ class OrderHistory extends Component {
             Authorization: 'Token token=' + store.user.token
         },
         success: (data) => {
-          orders.splice(orders.findIndex((ele) => ele.id === orderId),1)
+          var updatedOrders = this.state.orders
+          updatedOrders.splice(updatedOrders.findIndex((ele) => ele.id === orderId),1)
           this.setState({
-          orders: orders
+            orders: updatedOrders
           })
+          this.props.history.push('/karts/order-history')
         },
         error: (error) => {
           console.error(error)
