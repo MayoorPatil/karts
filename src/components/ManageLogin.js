@@ -73,6 +73,8 @@ class ManageLogin extends Component {
         $('#sign-out-link, #change-pwd-link, #order-history').removeClass('hidden');
       },
       error: (error) => {
+        this.state.credentials.email = ''
+        this.state.credentials.password = ''
         this.setState({
           message: 'Sign in failed! Credentials do not match. Please try again'
         })

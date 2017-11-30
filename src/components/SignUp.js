@@ -68,6 +68,9 @@ class SignUp extends Component {
       $('#sign-up-toggle-text, #sign-up-toggle').addClass('hidden');
     },
     error: (response, error) => {
+      this.state.credentials.email = ''
+      this.state.credentials.password = ''
+      this.state.credentials.password_confirmation = ''
       this.setState({
         message: 'Sign up failed! Please try again ' + response.responseText
       })
