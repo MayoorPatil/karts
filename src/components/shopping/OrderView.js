@@ -54,8 +54,8 @@ class OrderView extends Component {
       this.state.errors.name = 'Name must be at least 2 characters';
       formIsValid = false;
     }
-    if (this.state.order.phone_number.length < 7) {
-      this.state.errors.phone_number = 'Phone number must be at least 7 characters';
+    if (this.state.order.phone_number.length < 7 || this.state.order.phone_number.length > 10) {
+      this.state.errors.phone_number = 'Phone number must be at least 7 digits and less than 11 digits';
       formIsValid = false;
     }
     this.setState({errors: this.state.errors});
@@ -185,8 +185,8 @@ class OrderView extends Component {
         <TextInput
         type="text"
         name="email"
-        label="Email"
-        placeholder="Email here"
+        label=" Confirm Email"
+        placeholder="Confirm Email here"
         value={this.state.email}
         onChange={this.setOrderState}
         error={this.state.errors.email}/>
