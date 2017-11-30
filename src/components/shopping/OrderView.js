@@ -70,6 +70,7 @@ class OrderView extends Component {
     let data = {};
     data['order'] = this.state.order
     data.order.amount = store.amount
+    data.order.status = 'open'
     $.ajax({
     url: apiOrigin() + '/orders',
     method: 'POST',

@@ -8,6 +8,7 @@ class OrderHistory extends Component {
   constructor(props) {
     super(props);
     this.displayOrder = this.displayOrder.bind(this);
+    this.deleteOrder = this.deleteOrder.bind(this);
     this.state = {
       orders: []
     }
@@ -39,6 +40,29 @@ class OrderHistory extends Component {
   })
   }
 
+  deleteOrder (e, orderId) {
+    let products = []
+    let orders = this.state.orders
+    if (store.user) {
+      $.ajax({
+        url: apiOrigin() + '/orders/' + orderId,
+        method: 'DELETE',
+        headers: {
+            Authorization: 'Token token=' + store.user.token
+        },
+        success: (data) => {
+          orders.splice(orders.findIndex((ele) => ele.id === orderId),1)
+          this.setState({
+          orders: orders
+          })
+        },
+        error: (error) => {
+          console.error(error)
+        }
+      });
+  }
+}
+
   displayOrder(e, props) {
     store.orderIdToDisplay = props
     this.props.history.push('/karts/order-display')
@@ -56,8 +80,10 @@ class OrderHistory extends Component {
           <td> {order.id} </td>
           <td>{order.created_at}</td>
           <td>{amount}</td>
-          <td>{status}</td>
-          <td><button id={order.id} className="btn btn-info btn-xs" onClick={(e) => this.displayOrder(e, orderId)}>View Details</button></td>
+          <td>
+            <button id={order.id} className="btn btn-info btn-xs" onClick={(e) => this.displayOrder(e, orderId)}>View Details</button>&nbsp;&nbsp;
+            <button id={order.id} className="btn btn-danger btn-xs" onClick={(e) => this.deleteOrder(e, orderId)}>Delete Order</button>
+          </td>
         </tr>
       })
       return (
@@ -68,7 +94,6 @@ class OrderHistory extends Component {
                 <th>Order Id</th>
                 <th>Order Date</th>
                 <th>Amount</th>
-                <th>Status</th>
               </tr>
             </thead>
             <tbody>
