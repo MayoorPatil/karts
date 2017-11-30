@@ -69,7 +69,7 @@ class ManageLogin extends Component {
             this.props.history.push('/karts');
         }
         $('#sign-in-link').addClass('hidden');
-        $('#sign-out-link, #change-pwd-link').removeClass('hidden');
+        $('#sign-out-link, #change-pwd-link, #order-history').removeClass('hidden');
       },
       error: (error) => {
         this.setState({

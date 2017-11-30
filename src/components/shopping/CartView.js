@@ -4,10 +4,8 @@ const store = require('../../store');
 class CartView extends Component {
 
   checkout () {
-    console.log('in Checkout')
     if (store.user) {
-      console.log('Go to order view')
-      console.log('get details and create order')
+      this.props.history.push('/karts/order-view')
     } else {
       store.proceedToCheckout = true
       this.props.history.push('/karts/sign-in')
@@ -27,7 +25,7 @@ class CartView extends Component {
       })
       var checkout
       if (store.user) {
-        checkout = <button id="place-order" className="btn btn-success" onClick={(e) => this.placeOrder(e)}>Place Order</button>
+        checkout = <button id="place-order" className="btn btn-success" onClick={(e) => this.checkout(e)}>Place Order</button>
       } else {
         checkout = <button id="checkout" className="btn btn-success" onClick={(e) => this.checkout(e)}>Proceed To Checkout</button>
       }

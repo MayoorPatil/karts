@@ -14,7 +14,8 @@ class OrderView extends Component {
         name: '',
         address: '',
         phone_number: 1111111111,
-        email: ''
+        email: '',
+        amount: 0
       },
       errors: {}
     }
@@ -68,6 +69,7 @@ class OrderView extends Component {
     }
     let data = {};
     data['order'] = this.state.order
+    data.order.amount = store.amount
     $.ajax({
     url: apiOrigin() + '/orders',
     method: 'POST',
@@ -76,7 +78,32 @@ class OrderView extends Component {
       },
     data: data,
     success: (response) => {
-      this.props.history.push('/karts/shopping');
+      store.cartProducts.forEach((cartProduct) => {
+        let assignData = {}
+        assignData['assignment'] = {}
+        assignData.assignment['order_id'] = response.order.id
+        assignData.assignment['product_id'] = cartProduct.id
+        $.ajax({
+        url: apiOrigin() + '/assignments',
+        method: 'POST',
+        headers: {
+            Authorization: 'Token token=' + store.user.token
+          },
+        data: assignData,
+        success: (response) => {
+          // console.log('assign response..', response)
+        },
+        error: (response, error) => {
+          this.setState({
+            message: 'Failed to place order! Please try again ' + response.responseText
+          })
+            console.error(response)
+          }
+        })
+      })
+      store.cartProducts = []
+      $('#cart-count').html(store.cartProducts.length)
+      this.props.history.push('/karts/order-history');
     },
     error: (response, error) => {
       this.setState({
@@ -98,9 +125,10 @@ class OrderView extends Component {
           <td>{item.price}</td>
         </tr>
       })
+      store.amount = sum
       var checkout
       if (store.user) {
-        checkout = <button id="place-order" className="btn btn-success" onClick={(e) => this.placeOrder(e)}>Place Order</button>
+        checkout = <button id="confirm-order" className="btn btn-success" onClick={(e) => this.placeOrder(e)}>Confirm Order</button>
       } else {
         checkout = 'Please sign-in to place the order'
       }

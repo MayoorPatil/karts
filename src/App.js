@@ -10,6 +10,8 @@ import AddProduct from './components/products/AddProduct.js';
 import ManageShopping from './components/shopping/ManageShopping.js';
 import CartView from './components/shopping/CartView.js';
 import OrderView from './components/shopping/OrderView.js';
+import OrderHistory from './components/shopping/OrderHistory.js';
+import OrderDisplay from './components/shopping/OrderDisplay.js';
 import { Navbar } from 'react-bootstrap';
 import {
   BrowserRouter as Router,
@@ -33,8 +35,8 @@ class App extends Component {
             <Navbar.Header>
               <ul className="nav navbar-nav">
                 <li><Link to="/karts/sign-in" id="sign-in-link">Sign In / Register</Link></li>
-                <li><Link to="/karts/change-password" id="change-pwd-link" className="hidden">Change Password</Link></li>
                 <li><Link to="/karts/shopping" id="products">Shopping</Link></li>
+                <li><Link to="/karts/order-history" id="order-history" className="hidden">Order History</Link></li>
               </ul>
             </Navbar.Header>
               <ul className="nav navbar-nav navbar-right">
@@ -44,6 +46,7 @@ class App extends Component {
                   </Link>
                 </li>
                 <li><Link to="/karts/products" id="products">Manage Products</Link></li>
+                <li><Link to="/karts/change-password" id="change-pwd-link" className="hidden">Change Password</Link></li>
                 <li><Link to="/karts/sign-out" id="sign-out-link" className="hidden">Sign Out</Link></li>
               </ul>
             </Navbar.Collapse>
@@ -60,6 +63,8 @@ class App extends Component {
           <Route exact path="/karts/shopping" component={ManageShopping}/>
           <Route exact path="/karts/cart-view" component={CartView}/>
           <Route exact path="/karts/order-view" component={OrderView}/>
+          <Route exact path="/karts/order-history" component={OrderHistory}/>
+          <Route exact path="/karts/order-display" component={OrderDisplay}/>
         </div>
       </Router>
     )
