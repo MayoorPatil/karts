@@ -43,6 +43,14 @@ onChangePassword(e) {
   data: data,
   success: (response) => {
     this.props.history.push('/karts');
+  },
+  error: (response, error) => {
+    this.state.old = ''
+    this.state.new = ''
+    this.setState({
+      message: 'Password change failed! Please try again ' + response.responseText
+    })
+    console.error(response)
   }
 })
 }
