@@ -1,7 +1,22 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 const store = require('../../store');
 
 class CartView extends Component {
+
+  constructor(props) {
+    super(props);
+    this.updateCart = this.updateCart.bind(this);
+    this.state = {
+      cartProducts: []
+    }
+  }
+
+componentDidMount () {
+  this.setState({
+    cartProducts: store.cartProducts
+  })
+}
 
   checkout () {
     if (store.user) {
@@ -12,15 +27,28 @@ class CartView extends Component {
     }
   }
 
+  updateCart (e, props) {
+    var updatedProducts = this.state.cartProducts
+    updatedProducts.splice(updatedProducts.findIndex((ele) => ele.id === props),1)
+    this.setState({
+      cartProducts: updatedProducts
+    })
+    $('#cart-count').html(this.state.cartProducts.length)
+  }
+
   render() {
-    if (store.cartProducts) {
+    if (store.cartProducts && store.cartProducts.length > 0) {
       var sum = 0.0
       var cartProducts = store.cartProducts.map((item, index) => {
         sum += Number((Math.round(parseFloat(item.price) + 'e2')) + 'e-2')
         return <tr id={item.id} key={index}>
           <td>{item.id}</td>
           <td>{item.description}</td>
-          <td>{item.price}</td>
+          <td>{item.price}&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" className="btn btn-default btn-sm" onClick={(e) => this.updateCart(e, item.id)}>
+            <span className="glyphicon glyphicon-trash"></span>
+            </button>
+          </td>
         </tr>
       })
       var checkout

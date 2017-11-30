@@ -3,3 +3,17 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.glyphicon-edit{
+  color: #4e76f1;
+  font-size:25px;
+}
+
+.btn-primary{
+  background-color: #ff165e;
+  border: 0;
+}
+
+.btn-primary:hover {
+  background-color: #ce134d;
+}

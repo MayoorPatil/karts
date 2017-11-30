@@ -12,6 +12,8 @@ import CartView from './components/shopping/CartView.js';
 import OrderView from './components/shopping/OrderView.js';
 import OrderHistory from './components/shopping/OrderHistory.js';
 import OrderDisplay from './components/shopping/OrderDisplay.js';
+import About from './components/About.js';
+import Contact from './components/Contact.js';
 import { Navbar } from 'react-bootstrap';
 import {
   BrowserRouter as Router,
@@ -36,6 +38,8 @@ class App extends Component {
               <ul className="nav navbar-nav">
                 <li><Link to="/karts/sign-in" id="sign-in-link">Sign In / Register</Link></li>
                 <li><Link to="/karts/shopping" id="products">Shopping</Link></li>
+                <li><Link to="/karts/about" id="products">About</Link></li>
+                <li><Link to="/karts/contact" id="products">Contact</Link></li>
                 <li><Link to="/karts/order-history" id="order-history" className="hidden">Order History</Link></li>
               </ul>
             </Navbar.Header>
@@ -65,6 +69,8 @@ class App extends Component {
           <Route exact path="/karts/order-view" component={OrderView}/>
           <Route exact path="/karts/order-history" component={OrderHistory}/>
           <Route exact path="/karts/order-display" component={OrderDisplay}/>
+          <Route exact path="/karts/about" component={About}/>
+          <Route exact path="/karts/contact" component={Contact}/>
         </div>
       </Router>
     )
