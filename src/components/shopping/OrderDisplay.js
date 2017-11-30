@@ -5,6 +5,23 @@ const apiOrigin = require('../../config');
 
 class OrderDisplay extends Component {
 
+  constructor(props) {
+    super(props);
+    this.deleteItem = this.deleteItem.bind(this);
+    this.state = {
+      products: []
+    }
+  }
+
+  componentDidMount () {
+    if (store.orders) {
+      var order = store.orders.find(ele => ele.order.id === store.orderIdToDisplay)
+      this.setState({
+        products: order.order.products
+      })
+    }
+  }
+
   deleteItem (e, array) {
     if (store.user) {
       let data = {};
@@ -30,6 +47,11 @@ class OrderDisplay extends Component {
                 Authorization: 'Token token=' + store.user.token
             },
             success: (data) => {
+              var updatedProducts = this.state.products
+              updatedProducts.splice(updatedProducts.findIndex((ele) => ele.id === array[1].id),1)
+              this.setState({
+                products: updatedProducts
+              })
             },
             error: (error) => {
               console.error(error)
