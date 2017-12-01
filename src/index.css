@@ -22,10 +22,17 @@ body {
     margin-left: -15px;
 }
 
-.thumbnail .caption {
+.caption {
     padding: 3px;
     color: #333;
 }
+
+.thumbnail {
+    padding: 3px;
+    color: #333;
+    height: 406px;
+}
+
 .font {
     font-family: "Times New Roman", Georgia, Serif;
 }
