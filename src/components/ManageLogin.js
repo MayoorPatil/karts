@@ -68,7 +68,7 @@ class ManageLogin extends Component {
         } else {
             $('#status-message').html('Login Success!!');
             var props = this.props.history
-            setTimeout(function() {props.push('/karts');},1000)
+            setTimeout(function() {props.push('/karts');},500)
         }
         response.user.id === 1 ? $('#manage-products').removeClass('hidden') : $('#manage-products').addClass('hidden')
         $('#sign-in-link').addClass('hidden');

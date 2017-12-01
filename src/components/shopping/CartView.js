@@ -30,6 +30,8 @@ componentDidMount () {
   updateCart (e, props) {
     var updatedProducts = this.state.cartProducts
     updatedProducts.splice(updatedProducts.findIndex((ele) => ele.id === props),1)
+    $('#status-message').html('Delete Success!!');
+    setTimeout(function() {$('#status-message').html('')},500)
     this.setState({
       cartProducts: updatedProducts
     })
@@ -59,6 +61,7 @@ componentDidMount () {
       }
       return (
         <div className="table-responsive">
+        <div id="status-message" className="container"></div>
           <table className="table">
             <thead>
               <tr>

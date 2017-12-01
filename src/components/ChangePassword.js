@@ -44,7 +44,7 @@ onChangePassword(e) {
   success: (response) => {
     $('#status-message').html('Changed Passoword Success!!');
     var props = this.props.history
-    setTimeout(function() {props.push('/karts');},1000)
+    setTimeout(function() {props.push('/karts');},500)
   },
   error: (response, error) => {
     this.state.old = ''

@@ -66,7 +66,7 @@ class SignUp extends Component {
       store.user = response.user
       $('#status-message').html('Sign-Up Success!!');
       var props = this.props.history
-      setTimeout(function() {props.push('/karts/sign-in');},1000)
+      setTimeout(function() {props.push('/karts/sign-in');},500)
       $('#sign-up-toggle-text, #sign-up-toggle').addClass('hidden');
     },
     error: (response, error) => {
