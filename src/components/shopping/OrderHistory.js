@@ -55,7 +55,11 @@ class OrderHistory extends Component {
           this.setState({
             orders: updatedOrders
           })
-          this.props.history.push('/karts/order-history')
+          $('#status-message').html('Delete Success!!');
+          var props = this.props.history
+          setTimeout(function() {
+          $('#status-message').html('');
+          props.push('/karts/order-history');},500)
         },
         error: (error) => {
           console.error(error)
@@ -91,6 +95,7 @@ class OrderHistory extends Component {
       })
       return (
         <div className="table-responsive">
+        <div id="status-message" className="container"></div>
           <table className="table">
             <thead>
               <tr>
