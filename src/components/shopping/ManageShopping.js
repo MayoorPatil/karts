@@ -65,7 +65,9 @@ class ManageShopping extends Component {
               })
             return (
             <div id="test" className="container">
-              {components}
+              <div className="row" ref="shopping-div">
+                {components}
+              </div>
             </div>
           );
         }

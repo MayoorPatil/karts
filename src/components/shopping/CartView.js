@@ -45,7 +45,7 @@ componentDidMount () {
           <td>{item.id}</td>
           <td>{item.description}</td>
           <td>{item.price}&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" className="btn btn-default btn-sm" onClick={(e) => this.updateCart(e, item.id)}>
+            <button type="button" className="btn btn-danger btn-sm" onClick={(e) => this.updateCart(e, item.id)}>
             <span className="glyphicon glyphicon-trash"></span>
             </button>
           </td>

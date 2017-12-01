@@ -85,8 +85,10 @@ addProduct(e) {
           })
         return (
         <div id="test" className="container">
-          <button className="btn btn-success" onClick={(e) => this.addProduct(e)}>Add New Product</button><br /><br />
-          {components}
+          <button className="btn btn-success btn-xs" onClick={(e) => this.addProduct(e)}>Add New Product</button><br /><br />
+          <div className="row" ref="mngproducts-div">
+            {components}
+          </div>
         </div>
       );
       }

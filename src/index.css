@@ -16,6 +16,22 @@ body {
 .input {
   color: red;
 }
-/*.shopping-container {
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.thumbnail .caption {
+    padding: 3px;
+    color: #333;
+}
+.font {
+    font-family: "Times New Roman", Georgia, Serif;
+}
+.jumbotron {
+  background-image: url('https://res.cloudinary.com/dvhvgdow9/image/upload/v1508697152/cartoon-background_rnwbxp.jpg');
+}
+/*.shopping-container { #3eefbf; background-color: #3ee6ef
   background-image: url(./images/shopping.jpg);
 }*/

@@ -4,8 +4,8 @@
 
 -   This is `KArts` a jewelry shopping application.
 -   The application allows users to view different types of locally home made jewelry items and purchase
--   Its a responsive single page application primarly built using React Framework and Ruby on Rails
--   This is my final Capstone project here at GA
+-   Its a responsive single page application primarly built using `React Framework` and `Ruby on Rails`
+-   This is my final Capstone project here at GA. Here is the link to the [`KArts Repo`](https://github.com/MayoorPatil/karts)
 
 In the future plan is to include support for the following:
 
@@ -35,7 +35,7 @@ Here are some steps on how to use the application:
 7.  Once the order the placed users can view their order in order history
 -   User also have the the ability to view their previous order and their details
 8.  User have the ability to delete their previous orders or place new orders
-9.  User can broswe about the artist and view contact information 
+9.  User can broswe about the artist and view contact information
 
 Here is the link to the application [`KArts`](https://mayoorpatil.github.io/karts)
 
