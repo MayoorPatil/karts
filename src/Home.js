@@ -7,7 +7,7 @@ class Home extends Component {
     return (
       <div className="container font">
         <div className="jumbotron">
-          <h2>Welcome to Kylee's Jewelery Collection</h2>
+          <h2>Welcome to Kylee's Jewelry Collection</h2>
           <p>Start shopping for jewelry and use the cart icon/button to place your order</p>
           <p>Before you place your order please sign-in so that we can keep track of your orders</p>
           <p>Happy Shopping!!</p>
