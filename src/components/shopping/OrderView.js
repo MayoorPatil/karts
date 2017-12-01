@@ -117,7 +117,7 @@ class OrderView extends Component {
   }
 
   render() {
-    if (store.cartProducts) {
+    if (store.cartProducts && store.cartProducts.length > 0) {
       var sum = 0.0
       var cartProducts = store.cartProducts.map((item, index) => {
         sum += Number((Math.round(parseFloat(item.price) + 'e2')) + 'e-2')
