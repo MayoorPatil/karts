@@ -66,7 +66,9 @@ class ManageLogin extends Component {
           store.proceedToCheckout = false
           this.props.history.push('/karts/order-view');
         } else {
-            this.props.history.push('/karts');
+            $('#status-message').html('Login Success!!');
+            var props = this.props.history
+            setTimeout(function() {props.push('/karts');},1000)
         }
         response.user.id === 1 ? $('#manage-products').removeClass('hidden') : $('#manage-products').addClass('hidden')
         $('#sign-in-link').addClass('hidden');
@@ -90,6 +92,7 @@ class ManageLogin extends Component {
   render() {
     return (
       <div>
+        <div id="status-message" className="container"></div>
         <SignIn
         credentials={this.state.credentials}
         onChange={this.setLoginState}

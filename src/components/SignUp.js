@@ -64,7 +64,9 @@ class SignUp extends Component {
     success: (response) => {
       this.setState({user: response.user});
       store.user = response.user
-      this.props.history.push('/karts/sign-in');
+      $('#status-message').html('Sign-Up Success!!');
+      var props = this.props.history
+      setTimeout(function() {props.push('/karts/sign-in');},1000)
       $('#sign-up-toggle-text, #sign-up-toggle').addClass('hidden');
     },
     error: (response, error) => {
@@ -88,6 +90,7 @@ class SignUp extends Component {
     return (
       <div className="container">
       <div className="container">
+      <div id="status-message" className="container"></div>
         <h3>Sign Up</h3>
         <form>
           <TextInput

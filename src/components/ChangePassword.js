@@ -42,7 +42,9 @@ onChangePassword(e) {
     },
   data: data,
   success: (response) => {
-    this.props.history.push('/karts');
+    $('#status-message').html('Changed Passoword Success!!');
+    var props = this.props.history
+    setTimeout(function() {props.push('/karts');},1000)
   },
   error: (response, error) => {
     this.state.old = ''
@@ -63,6 +65,7 @@ onChangePassword(e) {
       if (store.user) {
         return (
           <div className="container">
+          <div id="status-message" className="container"></div>
             <form>
               <div className="form-group row">
                 <div className="col-xs-4">
