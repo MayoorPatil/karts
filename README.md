@@ -6,7 +6,7 @@
 -   The application allows users to view different types of locally home made jewelry items and purchase
 -   Its a responsive single page application primarly built using `React Framework` and `Ruby on Rails`
 -   This is my final Capstone project here at GA. Here is the link to the [`KArts Repo`](https://github.com/MayoorPatil/karts)
--   ![App Screenshot](https://github.com/MayoorPatil/karts/blob/master/src/images/KArts.png)
+    ![App Screenshot](https://github.com/MayoorPatil/karts/blob/master/src/images/KArts.png)
 
 In the future plan is to include support for the following:
 
